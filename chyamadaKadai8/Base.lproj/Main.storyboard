@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PZq-wr-gQx">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab View Controller-->
+        <scene sceneID="gfG-Fx-E4g">
+            <objects>
+                <tabBarController id="PZq-wr-gQx" customClass="TabViewController" customModule="chyamadaKadai8" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ift-sD-x14">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="1VY-M7-V5Q"/>
+                        <segue destination="Znu-Np-oqg" kind="relationship" relationship="viewControllers" id="dql-RE-1Wk"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1hb-25-Y45" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1120" y="-152"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="Map-1Z-dyC">
+            <objects>
+                <viewController id="Znu-Np-oqg" customClass="BlueViewController" customModule="chyamadaKadai8" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="I0v-nK-P5h" userLabel="Blue View">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="T2M-1G-XhC">
+                                <rect key="frame" x="48" y="180" width="318" height="31"/>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfG-W9-dD3" userLabel="Blue Slider Value Label">
+                                <rect key="frame" x="197.5" y="94" width="19" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="FXh-fo-K7G"/>
+                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                        <constraints>
+                            <constraint firstItem="wfG-W9-dD3" firstAttribute="top" secondItem="FXh-fo-K7G" secondAttribute="top" constant="50" id="9dE-Hd-UDe"/>
+                            <constraint firstItem="FXh-fo-K7G" firstAttribute="trailing" secondItem="T2M-1G-XhC" secondAttribute="trailing" constant="50" id="KBJ-8k-kF9"/>
+                            <constraint firstItem="wfG-W9-dD3" firstAttribute="centerX" secondItem="I0v-nK-P5h" secondAttribute="centerX" id="iPz-BH-YLn"/>
+                            <constraint firstItem="T2M-1G-XhC" firstAttribute="top" secondItem="wfG-W9-dD3" secondAttribute="bottom" constant="50" id="s7z-bj-fRA"/>
+                            <constraint firstItem="T2M-1G-XhC" firstAttribute="leading" secondItem="FXh-fo-K7G" secondAttribute="leading" constant="50" id="x0o-cf-a7L"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="kQo-Q7-gRV"/>
+                    <connections>
+                        <outlet property="blueViewSlider" destination="T2M-1G-XhC" id="lrK-47-39x"/>
+                        <outlet property="sliderValueLabel" destination="wfG-W9-dD3" id="KvM-ER-ID7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ook-GZ-S6w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-323.1884057971015" y="286.60714285714283"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="OrangeViewController" customModule="chyamadaKadai8" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" userLabel="Orange View">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="aOy-P3-btK">
+                                <rect key="frame" x="48" y="180" width="318" height="31"/>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JoI-NO-Zeu" userLabel="Orange Slider Value Label">
+                                <rect key="frame" x="197.5" y="94" width="19" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <constraints>
+                            <constraint firstItem="aOy-P3-btK" firstAttribute="top" secondItem="JoI-NO-Zeu" secondAttribute="bottom" constant="50" id="8LA-fr-PWb"/>
+                            <constraint firstItem="aOy-P3-btK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="GU6-Yh-Uav"/>
+                            <constraint firstItem="JoI-NO-Zeu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="Nft-Vj-OcE"/>
+                            <constraint firstItem="JoI-NO-Zeu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aDl-98-g96"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aOy-P3-btK" secondAttribute="trailing" constant="50" id="knH-9b-Uv3"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="j4N-2L-O4S"/>
+                    <connections>
+                        <outlet property="orangeViewSlider" destination="aOy-P3-btK" id="hMB-n7-esa"/>
+                        <outlet property="sliderValueLabel" destination="JoI-NO-Zeu" id="8LM-wc-vdY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-323.1884057971015" y="-395.08928571428572"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
