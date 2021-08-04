@@ -8,21 +8,21 @@
 import Foundation
 
 extension Notification.Name {
-    static let myNotification = Notification.Name("currentValueNotification")
+    static let didChangeCurrentValue = Notification.Name("currentValueNotification")
 }
 
-extension CurrentValuePoster {
-    static let currentValueKey = "currentValueKey"
-}
+final class CurrentValueModel {
+    static let shared = CurrentValueModel()
 
-final class CurrentValuePoster {
-    static let shared = CurrentValuePoster()
-    var sharedValue: Float = 0
+    private init() {}
 
-    func post(currentValue: Float) {
-        NotificationCenter.default.post(name: .myNotification,
-                                        object: nil,
-                                        userInfo: [Self.currentValueKey: currentValue])
+    private(set) var sharedValue: Float = 0
+
+    func set(currentValue: Float) {
         sharedValue = currentValue
+
+        NotificationCenter.default.post(name: .didChangeCurrentValue,
+                                        object: nil,
+                                        userInfo: nil)
     }
 }
