@@ -8,36 +8,38 @@
 import UIKit
 
 final class OrangeViewController: UIViewController {
-    @IBOutlet private weak var sliderValueLabel: UILabel!
-    @IBOutlet private weak var orangeViewSlider: UISlider! {
+    @IBOutlet private weak var valueLabel: UILabel!
+    @IBOutlet private weak var valueSlider: UISlider! {
         didSet {
-            orangeViewSlider.addTarget(self,
-                                       action: #selector(postValueChanged),
-                                       for: .valueChanged)
+            valueSlider.addTarget(self,
+                                  action: #selector(didChangeSliderValue),
+                                  for: .valueChanged)
         }
     }
+
+    private let model = CurrentValueModel.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(observeValueChanged),
-                                               name: .myNotification,
+                                               name: .didChangeCurrentValue,
                                                object: nil)
+        updateUI(value: model.sharedValue)
+    }
+
+    private func updateUI(value: Float) {
+        valueSlider.value = value
+        valueLabel.text = String(describing: value)
     }
 }
 
 private extension OrangeViewController {
     @objc func observeValueChanged(_ notification: Notification) {
-        guard let currentValue = notification.userInfo?[CurrentValuePoster.currentValueKey] as? Float else { return }
-        sliderValueLabel.text = String(describing: currentValue)
-        orangeViewSlider.value = currentValue
+        updateUI(value: model.sharedValue)
     }
 
-    @objc func postValueChanged() {
-        let poster = CurrentValuePoster.shared
-
-        let orangeViewValue = orangeViewSlider.value
-        sliderValueLabel.text = String(describing: orangeViewValue)
-        poster.post(currentValue: orangeViewValue)
+    @objc func didChangeSliderValue() {
+        model.set(currentValue: valueSlider.value)
     }
 }
