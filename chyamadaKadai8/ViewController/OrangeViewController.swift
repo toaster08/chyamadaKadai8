@@ -28,16 +28,16 @@ final class OrangeViewController: UIViewController {
 
 private extension OrangeViewController {
     @objc func observeValueChanged(_ notification: Notification) {
-        guard let currentValue = notification.userInfo?[CurrentValuePoster.currentValueKey] as? Float else { return }
+        guard let currentValue = notification.userInfo?[CurrentValueModel.currentValueKey] as? Float else { return }
         sliderValueLabel.text = String(describing: currentValue)
         orangeViewSlider.value = currentValue
     }
 
     @objc func postValueChanged() {
-        let poster = CurrentValuePoster.shared
+        let poster = CurrentValueModel.shared
 
         let orangeViewValue = orangeViewSlider.value
         sliderValueLabel.text = String(describing: orangeViewValue)
-        poster.post(currentValue: orangeViewValue)
+        poster.set(currentValue: orangeViewValue)
     }
 }

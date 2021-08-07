@@ -8,39 +8,39 @@
 import UIKit
 
 final class BlueViewController: UIViewController {
-    @IBOutlet private weak var sliderValueLabel: UILabel!
-    @IBOutlet private weak var blueViewSlider: UISlider! {
+    @IBOutlet private weak var valueLabel: UILabel!
+    @IBOutlet private weak var valueSlider: UISlider! {
         didSet {
-            blueViewSlider.addTarget(self,
+            valueSlider.addTarget(self,
                                      action: #selector(postValueChanged),
                                      for: .valueChanged)
         }
     }
 
-    private var poster: CurrentValuePoster!
+    private let model = CurrentValueModel.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(observeValueChanged),
-                                               name: .myNotification,
+                                               name: .didChangeCurrentValue,
                                                object: nil)
-        poster = CurrentValuePoster.shared
-        blueViewSlider.value = poster.sharedValue
-        sliderValueLabel.text = String(describing: blueViewSlider.value)
+        
+        updateUI(value: model.sharedValue)
+    }
+    
+    private func updateUI(value:Float){
+        valueSlider.value = value
+        valueLabel.text = String(describing: value)
     }
 }
 
 private extension BlueViewController {
     @objc func observeValueChanged(_ notification: Notification) {
-        guard let currentValue = notification.userInfo?[CurrentValuePoster.currentValueKey] as? Float else { return }
-        sliderValueLabel.text = String(describing: currentValue)
-        blueViewSlider.value = currentValue
+        updateUI(value: model.sharedValue)
     }
 
     @objc func postValueChanged() {
-        let blueViewValue = blueViewSlider.value
-        sliderValueLabel.text = String(describing: blueViewValue)
-        poster?.post(currentValue: blueViewValue)
+        model.set(currentValue: valueSlider.value)
     }
 }
